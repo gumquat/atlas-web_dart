@@ -1,20 +1,16 @@
-import 'dart:io';
+void main(List<String> args) {
+  if (args.isEmpty) {
+    print('Please provide a number as an argument.');
+    return;
+  }
 
-void main() {
-  print('Enter a number:');
-  String? input = stdin.readLineSync();
+  int number = int.parse(args[0]);
 
-  if (input != null) {
-    int number = int.parse(input);
-
-    if (number > 0) {
-      print('$number is positive');
-    } else if (number == 0) {
-      print('$number is zero');
-    } else {
-      print('$number is negative');
-    }
+  if (number > 0) {
+    print('$number is positive');
+  } else if (number == 0) {
+    print('$number is zero');
   } else {
-    print('Invalid input');
+    print('$number is negative');
   }
 }
