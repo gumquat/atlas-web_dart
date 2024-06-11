@@ -1,18 +1,14 @@
-import 'dart:io';
+void main(List<String> args){
+  if (args.length <= 0)
+    print('Provide a real input please');
+    return;
 
-void main() {
-  print('Enter a number:');
-  String? input = stdin.readLineSync();
-
-  if (input != null) {
-    int number = int.parse(input);
-
-    if (number > 0) {
-      print('$number is positive');
-    } else if (number == 0) {
-      print('$number is zero');
-    } else {
-      print('$number is negative');
-    }
+  int number = int.parse(args[0]);
+  if (number > 0) {
+    print('$number is positive');
+  } else if (number == 0) {
+    print('$number is zero');
+  } else {
+    print('$number is negative');
   }
 }
