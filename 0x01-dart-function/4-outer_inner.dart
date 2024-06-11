@@ -1,13 +1,16 @@
 // Outer function
-void outer(String name, String id) {
-  String fullName = inner(name);
-  print('Full Name: $fullName, ID: $id');
+void outer(String fullName, String id) {
+  String formattedName = inner(fullName);
+  print('Full Name: $formattedName, ID: $id');
 }
 
 // Inner function
-String inner(String name) {
-  List<String> nameParts = name.split(' ');
+String inner(String fullName) {
+  List<String> nameParts = fullName.split(' ');
+  if (nameParts.length != 2) {
+    return 'Invalid name format';
+  }
   String firstName = nameParts[0];
   String lastName = nameParts[1];
-  return '$lastName $firstName';
+  return '$lastName, $firstName';
 }
