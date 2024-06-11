@@ -1,16 +1,11 @@
-// Outer function
-void outer(String fullName, String id) {
-  String formattedName = inner(fullName);
-  print('Full Name: $formattedName, ID: $id');
-}
+void outer(String name, String id) {
+  String inner() {
+    var names = name.split(' ');
+    var lastNameInitial = names[1][0];
+    var firstName = names[0];
 
-// Inner function
-String inner(String fullName) {
-  List<String> nameParts = fullName.split(' ');
-  if (nameParts.length != 2) {
-    return 'Invalid name format';
+    return('Hello Agent $lastNameInitial.$firstName your id is $id');
   }
-  String firstName = nameParts[0];
-  String lastName = nameParts[1];
-  return '$lastName, $firstName';
+
+  print(inner());
 }
