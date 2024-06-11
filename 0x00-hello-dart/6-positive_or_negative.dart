@@ -1,31 +1,20 @@
 import 'dart:io';
 
 void main() {
-  stdout.write('Enter a number: ');
+  print('Enter a number:');
   String? input = stdin.readLineSync();
 
-  if (input == null) {
-    print('No input provided.');
-    return;
-  }
+  if (input != null) {
+    int number = int.parse(input);
 
-  int number;
-  try {
-    number = int.parse(input);
-  } catch (e) {
-    print('Invalid input. Please provide an integer.');
-    return;
-  }
-
-  print('$number is ${getNumberSign(number)}');
-}
-
-String getNumberSign(int number) {
-  if (number > 0) {
-    return 'positive';
-  } else if (number == 0) {
-    return 'zero';
+    if (number > 0) {
+      print('$number is positive');
+    } else if (number == 0) {
+      print('$number is zero');
+    } else {
+      print('$number is negative');
+    }
   } else {
-    return 'negative';
+    print('Invalid input');
   }
 }
