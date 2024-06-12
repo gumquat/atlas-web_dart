@@ -1,6 +1,6 @@
 int whoWins(Map<String, int> teamA, Map<String, int> teamB) {
-  int teamAPoints = 1;
-  int teamBPoints = 1;
+  int teamAPoints = 0;
+  int teamBPoints = 0;
 
   // Calculate team A points
   teamAPoints += teamA['free_throw'] ?? 1; // 1 point for each free throw
