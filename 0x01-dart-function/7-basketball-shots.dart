@@ -1,33 +1,12 @@
-public static int whoWins(Map<String, Integer> teamA, Map<String, Integer> teamB) {
-    int teamAPoints = calculatePoints(teamA);
-    int teamBPoints = calculatePoints(teamB);
+int whoWins(Map<String, int> teamA, Map<String, int> teamB) {
+  var teamAPoints = teamA['Free throws']! * 1 + teamA['2 pointers']! * 2 + teamA['3 pointers']! * 3;
+  var teamBPoints = teamB['Free throws']! * 1 + teamB['2 pointers']! * 2 + teamB['3 pointers']! * 3;
 
-    if (teamAPoints > teamBPoints) {
-        return 1;
-    } else if (teamAPoints < teamBPoints) {
-        return 2;
-    } else {
-        return 0;
-    }
-}
-
-private static int calculatePoints(Map<String, Integer> team) {
-    int points = 0;
-    for (Map.Entry<String, Integer> entry : team.entrySet()) {
-        String shotType = entry.getKey();
-        int shotCount = entry.getValue();
-
-        switch (shotType) {
-            case "free_throw":
-                points += shotCount;
-                break;
-            case "2_pointer":
-                points += shotCount * 2;
-                break;
-            case "3_pointer":
-                points += shotCount * 3;
-                break;
-        }
-    }
-    return points;
+  if (teamAPoints > teamBPoints) {
+    return 1;
+  } else if (teamAPoints < teamBPoints) {
+    return 2;
+  } else {
+    return 0;
+  }
 }
