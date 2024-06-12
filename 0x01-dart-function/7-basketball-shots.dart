@@ -1,18 +1,26 @@
 int whoWins(Map<String, int> teamA, Map<String, int> teamB) {
-  var teamAPoints = 0; // score for Team A 
-  var teamBPoints = 0; // score for taem B
+  int teamAPoints = 0;
+  int teamBPoints = 0;
 
-  // Calculate team A points here
-  teamAPoints += teamA['free_throw'] ?? 0; // 1 point for each free throw
-  teamAPoints += (teamA['2_pointer'] ?? 0) * 2; // 2 points for each 2-pointer
-  teamAPoints += (teamA['3_pointer'] ?? 0) * 3; // 3 points for each 3-pointer
+  // Calculate team A points
+  int freeThrowA = teamA.containsKey('free_throw') ? teamA['free_throw']! : 0;
+  int twoPointerA = teamA.containsKey('2_pointer') ? teamA['2_pointer']! : 0;
+  int threePointerA = teamA.containsKey('3_pointer') ? teamA['3_pointer']! : 0;
 
-  // Calculate team B points here
-  teamBPoints += teamB['free_throw'] ?? 0; // 1 point for each free throw
-  teamBPoints += (teamB['2_pointer'] ?? 0) * 2; // 2 points for each 2-pointer
-  teamBPoints += (teamB['3_pointer'] ?? 0) * 3; // 3 points for each 3-pointer
+  teamAPoints += freeThrowA; // 1 point for each free throw
+  teamAPoints += twoPointerA * 2; // 2 points for each 2-pointer
+  teamAPoints += threePointerA * 3; // 3 points for each 3-pointer
 
-  // Determine the winner here with an if else if else
+  // Calculate team B points
+  int freeThrowB = teamB.containsKey('free_throw') ? teamB['free_throw']! : 0;
+  int twoPointerB = teamB.containsKey('2_pointer') ? teamB['2_pointer']! : 0;
+  int threePointerB = teamB.containsKey('3_pointer') ? teamB['3_pointer']! : 0;
+
+  teamBPoints += freeThrowB; // 1 point for each free throw
+  teamBPoints += twoPointerB * 2; // 2 points for each 2-pointer
+  teamBPoints += threePointerB * 3; // 3 points for each 3-pointer
+
+  // Determine the winner
   if (teamAPoints > teamBPoints) {
     return 1; // Team A wins
   } else if (teamAPoints < teamBPoints) {
