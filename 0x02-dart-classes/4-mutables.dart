@@ -8,7 +8,7 @@ class Password{
 
   String get password => _password; // get
   set password(String value){ //set
-    _password =- value;
+    _password = value;
   }
 
   bool isValid(){
