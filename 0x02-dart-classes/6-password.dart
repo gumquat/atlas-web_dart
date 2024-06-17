@@ -1,0 +1,27 @@
+class Password {
+  String _password = '';
+
+  // Make password private, this is a constructor
+  Password({String password = ''}) {
+    _password = password;
+  }
+
+  String get password => _password; // get
+  set password(String value) { // set
+    _password = value;
+  }
+
+  bool isValid() {
+    bool length = _password.length >= 8 && _password.length <= 16;
+    bool upper = _password.contains(RegExp(r'[A-Z]'));
+    bool lower = _password.contains(RegExp(r'[a-z]'));
+    bool digits = _password.contains(RegExp(r'[0-9]'));
+
+    return length & upper & lower & digits;
+  }
+
+  @override
+  String toString() {
+    return 'Your Password is: $_password';
+  }
+}
