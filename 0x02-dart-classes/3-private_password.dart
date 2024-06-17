@@ -12,7 +12,7 @@ class Password{
     bool lower = _password.contains(RegExp(r'[a-z]'));
     bool digits = _password.contains(RegExp(r'[0-9]'));
 
-    return length & upepr & lower & digits;
+    return length & upper & lower & digits;
   }
   @override
   String toString(){
