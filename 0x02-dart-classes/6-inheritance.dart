@@ -37,6 +37,6 @@ class User extends Password {
   @override
   String toString() {
     final passwordInstance = Password(password: user_password ?? '');
-    return 'User(id: $id, name: $name, age: $age, height: $height, Password: ${passwordInstance.isValid() ? 'true' : 'false'})';
+    return 'User(id: $id ,name: $name, age: $age, height: $height, Password: ${passwordInstance.isValid() ? 'true' : 'false'})';
   }
 }
