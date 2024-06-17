@@ -1,3 +1,5 @@
+import '4-mutables.dart';
+
 class User extends Password {
   String? name;
   int? age;
@@ -23,7 +25,6 @@ class User extends Password {
     };
   }
 
-  // dynamic lets any type of data be used
   static User fromJson(Map<dynamic, dynamic> userJson) {
     return User(
       id: userJson['id'],
@@ -36,6 +37,7 @@ class User extends Password {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, age: $age, height: $height, user_password: ${isValid() ? 'Valid' : 'Invalid'})';
+    final passwordInstance = Password(password: user_password ?? '');
+    return 'User(id: $id, name: $name, age: $age, height: $height, user_password: ${passwordInstance.isValid() ? 'Valid' : 'Invalid'})';
   }
 }
