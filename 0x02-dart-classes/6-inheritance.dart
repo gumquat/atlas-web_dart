@@ -8,10 +8,10 @@ class User extends Password {
   String? user_password;
 
   User({
-    required this.id,
     required this.name,
     required this.age,
     required this.height,
+    required this.id,
     required this.user_password,
   }) : super(password: user_password ?? '');
 
@@ -38,6 +38,6 @@ class User extends Password {
   @override
   String toString() {
     final passwordInstance = Password(password: user_password ?? '');
-    return 'User(id: $id, name: $name, age: $age, height: $height, user_password: ${passwordInstance.isValid() ? 'true' : 'false'})';
+    return 'User(id: $id, name: $name, age: $age, height: $height, Password: ${passwordInstance.isValid() ? 'true' : 'false'})';
   }
 }
