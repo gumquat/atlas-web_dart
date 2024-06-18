@@ -1,6 +1,6 @@
 import 'dart:async';
 
-Future<void> usersCount() {
+Future<void> usersCount() async {
   try {
     final userCount = await fetchUsersCount();
     print('Number of users: $userCount');
