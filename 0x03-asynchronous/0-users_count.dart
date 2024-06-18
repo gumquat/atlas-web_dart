@@ -1,4 +1,5 @@
 import 'dart:async';
+import '0-util.dart';
 
 Future<void> usersCount() async {
   try {
@@ -7,9 +8,4 @@ Future<void> usersCount() async {
   } catch (e) {
     print('Error fetching user count: $e');
   }
-}
-
-// Simulated fetchUsersCount() function
-Future<int> fetchUsersCount() {
-  return Future.delayed(const Duration(seconds: 2), () => 42);
 }
