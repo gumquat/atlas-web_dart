@@ -14,26 +14,18 @@ Future<double> calculateTotal() async {
 
     // Fetch user orders as a JSON string
     final ordersJson = await fetchUserOrders(userId);
+    final orders = jsonDecode(ordersJson).cast<String>();
 
-    // Check if the ordersJson is a valid JSON string
-    if (!ordersJson.startsWith('error caught')) {
-      final orders = jsonDecode(ordersJson).cast<String>();
+    double total = 0;
 
-      double total = 0;
-
-      // Iterate over each order and calculate the total price
-      for (final order in orders) {
-        final productPriceJson = await fetchProductPrice(order);
-        final productPrice = jsonDecode(productPriceJson);
-        total += productPrice;
-      }
-
-      return total;
-    } else {
-      // If ordersJson contains an error message, handle it here
-      print('Error fetching user orders: $ordersJson');
-      return -1;
+    // Iterate over each order and calculate the total price
+    for (final order in orders) {
+      final productPriceJson = await fetchProductPrice(order);
+      final productPrice = jsonDecode(productPriceJson);
+      total += productPrice;
     }
+
+    return total;
   } catch (e) {
     print('Error: $e');
     return -1;
