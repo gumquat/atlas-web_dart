@@ -96,3 +96,55 @@ The rick_and_morty.dart file is a Dart script that interacts with the Rick and M
   - If the request fails, it throws an exception.
 - After fetching all characters, the function iterates through 'allCharacters' and prints each character's name, species, status, and location.
 - Any exceptions encountered during the fetch process are caught and printed.
+
+```
+import 'dart:convert'; // Import for JSON encoding and decoding
+import 'package:http/http.dart' as http; // Import the http package for making HTTP requests
+
+// Asynchronous function to fetch and print Rick and Morty characters
+Future<void> printRmCharacters() async {
+  try {
+    // Base URL for the Rick and Morty API
+    const baseUrl = 'https://rickandmortyapi.com/api/character';
+
+    // Initialize an empty list to store all characters
+    final allCharacters = <Map<String, dynamic>>[];
+
+    // URL for the next page of results, starts with the base URL
+    String nextPageUrl = baseUrl;
+    
+    // Loop to fetch all pages of characters
+    while (nextPageUrl != null) {
+      // Send an HTTP GET request to the next page URL
+      final response = await http.get(Uri.parse(nextPageUrl));
+      
+      // Check if the request was successful
+      if (response.statusCode == 200) {
+        // Decode the JSON response
+        final data = jsonDecode(response.body);
+        
+        // Add the results (characters) to the list
+        allCharacters.addAll(data['results']);
+        
+        // Update nextPageUrl to the next page URL from the response
+        nextPageUrl = data['info']['next'];
+      } else {
+        // Throw an exception if the request failed
+        throw Exception('Failed to fetch characters');
+      }
+    }
+
+    // Loop through all characters and print their details
+    for (final character in allCharacters) {
+      print('Name: ${character['name']}');
+      print('Species: ${character['species']}');
+      print('Status: ${character['status']}');
+      print('Location: ${character['location']['name']}');
+      print('---'); // Separator for readability
+    }
+  } catch (e) {
+    // Catch and print any errors that occur during the fetch process
+    print('error caught: $e');
+  }
+}
+```
