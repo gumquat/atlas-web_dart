@@ -75,6 +75,15 @@ In this example:
 ### pubspec.yaml
 The 'pubspec.yaml' file is a configuration file used in Dart and Flutter projects. 
 It specifies metadata about the project, such as its name, dependencies, and environment constraints.
+```
+name: rick_and_morty
+
+dependencies:
+  http: ^0.13.3
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+```
 Breakdown:
 - name: The name of the project. In this case, it's rick_and_morty.
 - dependencies: A list of packages that the project depends on. Here, the project depends on the http package with a version constraint ^0.13.3. This package is used to make HTTP requests.
