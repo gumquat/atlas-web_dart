@@ -1,6 +1,3 @@
-import 'dart:convert';
-import '4-util.dart';
-
 Future<double> calculateTotal() async {
   try {
     // Fetch user data as a JSON string
@@ -14,7 +11,12 @@ Future<double> calculateTotal() async {
 
     // Fetch user orders as a JSON string
     final ordersJson = await fetchUserOrders(userId);
-    final orders = jsonDecode(ordersJson).cast<String>();
+    final orders = jsonDecode(ordersJson);
+
+    // Check if orders is null or not a List
+    if (orders == null || orders is! List) {
+      throw Exception('Invalid orders data');
+    }
 
     double total = 0;
 
@@ -22,7 +24,11 @@ Future<double> calculateTotal() async {
     for (final order in orders) {
       final productPriceJson = await fetchProductPrice(order);
       final productPrice = jsonDecode(productPriceJson);
-      total += productPrice;
+      if (productPrice is num) {
+        total += productPrice.toDouble();
+      } else {
+        throw Exception('Invalid product price');
+      }
     }
 
     return total;
